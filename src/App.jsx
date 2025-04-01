@@ -6,29 +6,29 @@ import AddContact from "./components/AddContact";
 import EditContact from "./components/EditContact";
 
 function App() {
-    // async function createAgenda(slug) {
-    //     try {
-    //         const response = await fetch(
-    //             `https://playground.4geeks.com/contact/agendas/${slug}`,
-    //             {
-    //                 method: "POST",
-    //                 headers: {
-    //                     "Content-Type": "application/json",
-    //                 },
-    //                 body: JSON.stringify(),
-    //             }
-    //         );
-    //         if (!response.ok) {
-    //             throw new Error("Error al crear la agenda: " + response.status);
-    //         }
-    //         const agenda = await response.json();
-    //         console.log("Agenda creada correctamente: " + agenda);
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // }
+    async function createAgenda(slug) {
+        try {
+            const response = await fetch(
+                `https://playground.4geeks.com/contact/agendas/${slug}`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(),
+                }
+            );
+            if (!response.ok) {
+                throw new Error("Error al crear la agenda: " + response.status);
+            }
+            const agenda = await response.json();
+            console.log("Agenda creada correctamente: " + agenda);
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
-    // createAgenda('oscar');
+    createAgenda('oscar');
 
     return (
         <ContactProvider>
