@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ContactProvider } from "./context/ContactContext";
 import ContactList from "./components/ContactList";
@@ -18,17 +18,17 @@ function App() {
                     body: JSON.stringify(),
                 }
             );
-            if (!response.ok) {
-                throw new Error("Error al crear la agenda: " + response.status);
-            }
             const agenda = await response.json();
-            console.log("Agenda creada correctamente: " + agenda);
+            console.log("Agenda creada correctamente");
         } catch (error) {
             console.error(error);
         }
     }
 
-    createAgenda('oscar');
+    useEffect(() => {
+        createAgenda('oscar')
+    }, [])
+
 
     return (
         <ContactProvider>
