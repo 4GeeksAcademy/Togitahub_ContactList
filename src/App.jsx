@@ -7,14 +7,14 @@ import EditContact from "./components/EditContact";
 
 function App() {
     useEffect(() => {
-        const createUser = async () => {
+        const createAgenda = async () => {
             try {
                 const response = await fetch("https://playground.4geeks.com/contact/agendas/oscar");
                 if (response.ok) {
                     console.log("La agenda ya existe")
                 } else if (response.status === 404) {
                     const createResponse = await fetch(
-                        `https://playground.4geeks.com/contact/agendas/${slug}`,
+                        `https://playground.4geeks.com/contact/agendas/oscar`,
                         {
                             method: "POST",
                             headers: {
@@ -35,7 +35,7 @@ function App() {
                 console.error(`Error en la solicitud: ${error.message}`)
             }
         }
-        createUser();
+        createAgenda();
     }, [])
 
     return (
